@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <title>Find Hritik Roshan Movies</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #7ff597;
+        color: black;
+        text-align: center;
+      }
+      </style>
+</head>
+<body class='alert-primary'>
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-sm-12">
+                <h1 class='bg-danger text-light text-center mt-2'>HR MOVIE FINDER</h1>
+            </div>
+
+            <div class="col-sm-7 ms-2">
+                <form action="" method='POST'> {% csrf_token %}
+                    <label class='text-dark fw-bold h3 mt-4 alert-warning'>Enter HR Movie Name</label> <br>
+                    <input type="text" name="mv" class='form-control' placeholder='Enter Hritik Roshan Movie Name'>
+                    <input type="submit" value="Find Movie" class='btn btn-warning mt-2'>
+                </form>
+            </div>
+            
+            {% if mvs %}
+            <div class="col-sm-8">
+               
+
+                <table class="table mt-2 table-bordered alert-light">
+                    
+                    <thead class="border border-2 border-dark">
+                      <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Director</th>
+                        <th scope="col">BoxOffice</th>
+                        <th scope="col">Release Date</th>
+                        <th scope="col">Cast</th>
+                      </tr>
+                    </thead>
+                    <tbody class="border border-2 border-dark">
+                        {% for mv in mvs %}
+                      <tr>
+                        <th scope="row">{{mv.movie_name}}</th>
+                        <td>{{mv.movie_director}}</td>
+                        <td>{{mv.movie_collection}}</td>
+                        <td>{{mv.movie_date}}</td>
+                        <td>{{mv.movie_starring}}</td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+                  <strong class='text-dark fw-bold h5'>Story:</strong>
+                  <div class="jumbotron jumbotron-fluid alert-warning shadow">
+                    <div class="container">
+                      <small class="text-dark fw-bold">{{mv.movie_story}}</small>
+                    </div>
+                  </div>
+                
+            </div>
+            
+            <div class="col-sm-4">
+                <strong class='text-dark fw-bold h5'>Poster:</strong> <br>
+                <img src={{mv.movie_poster}} alt="" height="350" width="300" border="5" class='shadow'>
+            </div> 
+
+            {% endfor %}
+
+            {% else %}
+            <div class="col-sm-6">
+                    <p class='fw-bold mt-5 text-center p-2 alert-danger text-dark h5'>( Only Hritik Roshan Movies Available here )</p>
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+  
+    <div class="footer">
+      <p><i class="fa fa-linkedin-square"></i> Developer <a href="https://www.linkedin.com/in/yogesh-chaudhari-29ab70219" class='fst-italic'>Yogesh Chaudhari</a></p>
+    </div>
+    
+</body>
+</html>
