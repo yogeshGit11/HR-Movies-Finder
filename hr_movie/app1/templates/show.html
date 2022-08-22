@@ -29,10 +29,10 @@
                 <h1 class='bg-danger text-light text-center mt-2'>HR MOVIE FINDER</h1>
             </div>
 
-            <div class="col-sm-7 ms-2">
-                <form action="" method='POST'> {% csrf_token %}
+            <div class="col-sm-7">
+                <form action="" method='POST' > {% csrf_token %}
                     <label class='text-dark fw-bold h3 mt-4 alert-warning'>Enter HR Movie Name</label> <br>
-                    <input type="text" name="mv" class='form-control' placeholder='Enter Hritik Roshan Movie Name'>
+                    <input type="text" name="mv" class='form-control' placeholder='Enter Hritik Roshan Movie Name' required>
                     <input type="submit" value="Find Movie" class='btn btn-warning mt-2'>
                 </form>
             </div>
@@ -82,7 +82,7 @@
 
             {% else %}
             <div class="col-sm-6">
-                    <p class='fw-bold mt-5 text-center p-2 alert-danger text-dark h5'>( Only Hritik Roshan Movies Available here )</p>
+                    <p class='fw-bold mt-5 text-center p-2 alert-danger text-dark h5 border border-dark'>(Only Hritik Roshan Movies Available here)</p>
             </div>
             {% endif %}
 
