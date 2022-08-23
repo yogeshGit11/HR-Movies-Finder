@@ -32,7 +32,12 @@
             <div class="col-sm-7">
                 <form action="" method='POST' > {% csrf_token %}
                     <label class='text-dark fw-bold h3 mt-4 alert-warning'>Enter HR Movie Name</label> <br>
-                    <input type="text" name="mv" class='form-control' placeholder='Enter Hritik Roshan Movie Name' required>
+                    <input type="text" list="atc" name="mv" class='form-control' placeholder='Enter Hritik Roshan Movie Name' required>
+                    <datalist id="atc">
+                      {% for rs in atc %}
+                        <option value="{{ rs.movie_name }}"></option>
+                      {% endfor %}
+                    </datalist>
                     <input type="submit" value="Find Movie" class='btn btn-warning mt-2'>
                 </form>
             </div>
